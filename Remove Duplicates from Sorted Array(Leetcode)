@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+class Solution {
+	public int removeDuplicates(int[] nums) {
+	    if (nums.length == 0) return 0;  
+	    //i works as a counter
+	    int i = 0;
+	    for (int j = 1; j < nums.length; j++) {
+	        if (nums[j] != nums[i]) {
+	            i++;
+	            nums[i] = nums[j];
+	        }
+	    }
+	    return i + 1; //as i starts from 0
+	}
+    
+    	
+    
+    
+    public static void main(String[] args) {
+    	Solution s = new Solution();
+    	int[] arr1 = {1,1,2};  //creating an array
+    	//calling the method
+    	int length = s.removeDuplicates(arr1);
+    	System.out.println(length);
+
+    }
+}
+
