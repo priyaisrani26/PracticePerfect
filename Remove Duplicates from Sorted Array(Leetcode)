@@ -8,7 +8,7 @@ class Solution {
 	    for (int j = 1; j < nums.length; j++) {
 	        if (nums[j] != nums[i]) {
 	            i++;
-	            nums[i] = nums[j];
+	            nums[i] = nums[j];  //just for input as per Leetcode
 	        }
 	    }
 	    return i + 1; //as i starts from 0
