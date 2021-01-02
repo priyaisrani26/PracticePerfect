@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+
+
+class Solution {
+	public int removeElement(int[] nums,int val) {
+		int len = nums.length;
+		//j works as a counter
+		int j=0;
+	    if (nums.length == 0) return 0;  
+
+	    for(int i=0; i<len; i++) {
+	    	if(nums[i] != val) {
+	    		nums[j] = nums[i];
+	    		j++;
+	    	}
+	    }
+	    return j; //here we are removing just one element
+	}
+    
+    	
+    
+    
+    public static void main(String[] args) {
+    	Solution s = new Solution();
+    	int[] arr1 = {0,1,2,2,3,0,4,2};  //creating an array
+    	//calling the method
+    	int val = 2;
+    	int length = s.removeElement(arr1,val);
+    	System.out.println(length);
+
+    }
+}
+
