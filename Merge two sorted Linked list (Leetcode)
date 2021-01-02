@@ -1,0 +1,63 @@
+//class for ListNode
+public class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) 
+    { this.val = val; this.next = next; }
+
+}
+
+///////////////////////////////////////////////////
+import java.util.LinkedList;
+
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    	ListNode head = new ListNode(0); //Using class ListNode
+    	ListNode dn =head; // creating dummy node
+    	while(l1 != null && l2 != null) {
+    		//to check the values for arranging them in descending order
+    		if(l1.val < l2.val) {
+    			dn.next = l1;
+    			l1= l1.next;
+    		}
+    		else{
+    			dn.next = l2;
+    			l2 = l2.next;
+    		}
+    		dn = dn.next;
+    	}
+    	
+    	if(l1 != null) {
+    		dn.next = l1;
+    	}
+    	if(l2 != null) {
+    		dn.next = l2;
+    	}
+    	return head.next;
+    }
+    
+    public static void main(String[] args) {
+    	Solution s = new Solution();
+    	//creating list1
+        ListNode l1 = new ListNode(1);
+        l1.next = new ListNode(2);
+        l1.next.next = new ListNode(4);
+        
+        //creating list2
+        ListNode l2 = new ListNode(1);
+        l2.next = new ListNode(3);
+        l2.next.next = new ListNode(4);
+        l2.next.next.next = new ListNode(5);
+        
+        //calling the method and getting values
+        ListNode mergedList = s.mergeTwoLists(l1,l2);
+        while(mergedList != null) {
+          System.out.print(mergedList.val + " ");
+          mergedList = mergedList.next;
+        }
+        System.out.println();
+      }
+    }
+
