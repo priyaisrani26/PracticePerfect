@@ -1,0 +1,42 @@
+public static void main(String[] args) {
+		String s1 = "foo(foo(bar(foo)bar(foo)))";
+		System.out.println("String Length: " + s1.length());
+    
+    //String Builder makes string mutable
+		StringBuilder sb = new StringBuilder(s1);
+		String s2="";
+		int z = 0;
+		ArrayList<Integer> al = new ArrayList<>();
+		
+    // loop to put index of ( in an arrat list
+		for(int i=0; i<s1.length()-1; i++) {
+			if(s1.charAt(i) == '(') {
+				al.add(i);
+			}
+		}
+		int n =al.size()-1;  //1
+		//System.out.println(n);
+		while(z != al.size()) {
+			//System.out.println(z);
+			//System.out.println("N: " + n);
+			  //loop satrting from index of last parenthesis
+				for(int k=al.get(n); k<s1.length(); k++) {
+					//System.out.println("K value: " +k + " || " + al.get(n));
+					if(s1.charAt(k) == ')') {
+						
+						String x = s1.substring(al.get(n)+1,k);
+						//System.out.println("X: " + x);
+						StringBuilder sbx = new StringBuilder(x);
+						System.out.println();
+						s2 = (s1.substring(0,al.get(n)) + sbx.reverse() + s1.substring(k+1));
+						s1 = s2;
+						//System.out.println(s1 +"----------");
+						n=n-1;
+						break;
+					}
+			}
+				z++;
+				//System.out.println(z);
+			}
+			System.out.println(s2);
+		}
