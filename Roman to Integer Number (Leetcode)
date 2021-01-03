@@ -1,0 +1,48 @@
+class Solution {
+    //defining value of each Roman Letter
+    public int value(char c){
+        int result=0;
+        if (c == 'I')
+                    result= 1;
+        if (c == 'V')
+                    result= 5;
+        if (c == 'X')
+                    result= 10;
+        if (c == 'L')
+                    result= 50;
+        if (c == 'C')
+                    result= 100;
+        if (c == 'D')
+                    result= 500;
+        if (c == 'M')
+                    result= 1000;
+        return result;
+            }
+ 
+public int romanToInt(String s) {
+        int len = s.length();
+        int answer=0;
+        if(len>=1 && len<=15){
+            for(int i=0; i<len; i++){
+                int i1 = value(s.charAt(i));
+                //this is for checking numbers like IV and VI which is done by comparing
+                if (i + 1 < len){
+                    int i2 = value(s.charAt(i+1));
+                if(i1 >= i2){
+                    answer += i1;
+                }
+                else {
+                    answer += i2 - i1;
+                    i++;
+                    }
+                                }
+                else{
+                answer += i1;
+                    }   
+        }
+            
+        
+        }
+    return answer;
+}
+}
